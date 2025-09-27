@@ -92,10 +92,6 @@ class ApiResponse
     }
 
     try {
-      /*if (!self::url($route)) {
-        throw new Exception("This route does not exist");
-      }*/
-
       return json_encode($data);
     } catch (Exception $exception) {
       http_response_code(404);
@@ -113,8 +109,7 @@ class ApiResponse
   {
     // Get header
     self::headers();
-    // Check http method
-    //var_dump($_SERVER['REQUEST_METHOD']);
+
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
       http_response_code(405);
       return json_encode([
@@ -123,8 +118,6 @@ class ApiResponse
       ]);
     }
 
-    //var_dump(file_get_contents('php://input'));
-    //return json_encode($data);
     return json_decode(file_get_contents('php://input'), true);
   }
 
