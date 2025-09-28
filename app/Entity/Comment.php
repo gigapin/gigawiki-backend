@@ -69,12 +69,12 @@ class Comment
     $this->pageId = $pageId;
   }
 
-  public function getPageType(): int
+  public function getPageType(): string
   {
     return $this->pageType;
   }
 
-  public function setPageType(int $pageType): void
+  public function setPageType(string $pageType): void
   {
     $this->pageType = $pageType;
   }
