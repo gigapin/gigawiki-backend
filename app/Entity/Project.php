@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Entity;
@@ -38,8 +37,8 @@ class Project
   #[Column(type: Types::TEXT, nullable: true)]
   private ?string $description = null;
 
-  #[Column(name: 'image_id',type: Types::BIGINT, options: ['unsigned' => true])]
-  private int $imageId;
+  #[Column(name: 'image_id',type: Types::BIGINT, nullable: true, options: ['unsigned' => true])]
+  private ?int $imageId;
 
   #[Column(type: Types::INTEGER, options: ['default' => 1])]
   private int $visibility = 1;
@@ -103,7 +102,7 @@ class Project
     $this->slug = $slug;
   }
 
-  public function getDescription(): string
+  public function getDescription(): string|null
   {
     return $this->description;
   }
@@ -113,7 +112,7 @@ class Project
     $this->description = $description;
   }
 
-  public function getImageId(): int
+  public function getImageId(): int|null
   {
     return $this->imageId;
   }
@@ -133,7 +132,7 @@ class Project
     $this->visibility = $visibility;
   }
 
-  public function getDeletedAt(): DateTime
+  public function getDeletedAt(): DateTime|null
   {
     return $this->deletedAt;
   }

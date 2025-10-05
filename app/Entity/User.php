@@ -42,26 +42,26 @@ class User
   private string $slug;
 
   #[Column(name: 'image_id', type: Types::BIGINT , nullable: true, options: ['unsigned' => true])]
-  private int $imageId;
+  private ?int $imageId;
 
   #[Column(name: 'remember_token', type: Types::STRING, length: 100, nullable: true)]
-  private string $rememberToken;
+  private ?string $rememberToken;
 
-  #[Column(name: 'created_at', type: Types::DATETIME_MUTABLE)]
-  private DateTime $createdAt;
+  #[Column(name: 'created_at', type: Types::DATETIME_MUTABLE, nullable: true)]
+  private ?DateTime $createdAt;
 
-  #[Column(name: 'updated_at', type: Types::DATETIME_MUTABLE)]
-  private DateTime $updatedAt;
+  #[Column(name: 'updated_at', type: Types::DATETIME_MUTABLE, nullable: true)]
+  private ?DateTime $updatedAt;
 
-  #[OneToMany(targetEntity: Project::class, mappedBy: 'userId')]
-  private Collection $projects;
+ /* #[OneToMany(targetEntity: Project::class, mappedBy: 'userId')]
+  private Collection $projects;*/
 
   public function __construct()
   {
-    $this->projects = new ArrayCollection();
+    //$this->projects = new ArrayCollection();
   }
 
-  public function getProjects(): Collection
+  /*public function getProjects(): Collection
   {
     return $this->projects;
   }
@@ -69,7 +69,7 @@ class User
   public function setProjects(Collection $projects): void
   {
     $this->projects = $projects;
-  }
+  }*/
 
 
   public function getId(): int
@@ -102,12 +102,12 @@ class User
     $this->email = $email;
   }
 
-  public function getEmailVerifiedAt(): DateTime
+  public function getEmailVerifiedAt(): DateTime|null
   {
     return $this->emailVerifiedAt;
   }
 
-  public function setEmailVerifiedAt(DateTime $emailVerifiedAt): void
+  public function setEmailVerifiedAt(?DateTime $emailVerifiedAt): void
   {
     $this->emailVerifiedAt = $emailVerifiedAt;
   }
@@ -142,42 +142,42 @@ class User
     $this->slug = $slug;
   }
 
-  public function getImageId(): int
+  public function getImageId(): int|null
   {
     return $this->imageId;
   }
 
-  public function setImageId(int $imageId): void
+  public function setImageId(?int $imageId): void
   {
     $this->imageId = $imageId;
   }
 
-  public function getRememberToken(): string
+  public function getRememberToken(): string|null
   {
     return $this->rememberToken;
   }
 
-  public function setRememberToken(string $rememberToken): void
+  public function setRememberToken(?string $rememberToken): void
   {
     $this->rememberToken = $rememberToken;
   }
 
-  public function getCreatedAt(): DateTime
+  public function getCreatedAt(): DateTime|null
   {
     return $this->createdAt;
   }
 
-  public function setCreatedAt(DateTime $createdAt): void
+  public function setCreatedAt(?DateTime $createdAt): void
   {
     $this->createdAt = $createdAt;
   }
 
-  public function getUpdatedAt(): DateTime
+  public function getUpdatedAt(): DateTime|null
   {
     return $this->updatedAt;
   }
 
-  public function setUpdatedAt(DateTime $updatedAt): void
+  public function setUpdatedAt(?DateTime $updatedAt): void
   {
     $this->updatedAt = $updatedAt;
   }

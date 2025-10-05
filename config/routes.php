@@ -9,7 +9,10 @@
  */
 
 use App\Controllers\HomeController;
+use App\Controllers\Admin\DashboardController;
 
 /** @var $route */
 
 $route->get('/', [HomeController::class, 'index']);
+
+$route->get('/api/v1/admin/dashboard', [DashboardController::class, 'index']);

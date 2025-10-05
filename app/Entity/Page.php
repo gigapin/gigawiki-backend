@@ -14,7 +14,7 @@ class Page
 {
   #[ORM\Id]
   #[ORM\GeneratedValue(strategy: 'AUTO')]
-  #[ORM\Column(type: Types::BIGINT)]
+  #[ORM\Column(type: Types::BIGINT, options: ['unsigned' => true])]
   private int $id;
 
   #[ORM\Column(name: 'created_by',type: Types::BIGINT, options: ['unsigned' => true])]
@@ -192,7 +192,7 @@ class Page
     $this->currentRevision = $currentRevision;
   }
 
-  public function getDeletedAt(): ?\DateTime
+  public function getDeletedAt(): \DateTime|null
   {
     return $this->deletedAt;
   }

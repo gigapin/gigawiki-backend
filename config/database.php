@@ -13,7 +13,7 @@ return [
      */
     'driver' => 'MYSQL',
     /**
-     * Set credentials for database selected.
+     * Set credentials for a database selected.
      */
     'DB_DRIVERS' => [
         'MYSQL' => [

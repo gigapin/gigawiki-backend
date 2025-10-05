@@ -1,8 +1,8 @@
 <?php
+declare(strict_types=1);
 
 namespace Src;
 
-use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;

@@ -29,8 +29,8 @@ class Activity
   #[Column(name: 'page_id', type: TYPES::BIGINT, nullable: true, options: ['unsigned' => true])]
   private ?int $pageId = null;
 
-  #[Column(name: 'page_type', type: TYPES::STRING, length: 191)]
-  private string $pageType;
+  #[Column(name: 'page_type', type: TYPES::STRING, length: 191, nullable: true)]
+  private ?string $pageType = null;
 
   #[Column(type: TYPES::STRING, length: 191, nullable: true)]
   private ?string $details = null;
@@ -74,7 +74,7 @@ class Activity
     $this->type = $type;
   }
 
-  public function getPageId(): int
+  public function getPageId(): int|null
   {
     return $this->pageId;
   }
@@ -84,7 +84,7 @@ class Activity
     $this->pageId = $pageId;
   }
 
-  public function getPageType(): string
+  public function getPageType(): string|null
   {
     return $this->pageType;
   }
@@ -94,7 +94,7 @@ class Activity
     $this->pageType = $pageType;
   }
 
-  public function getDetails(): string
+  public function getDetails(): string|null
   {
     return $this->details;
   }
@@ -104,7 +104,7 @@ class Activity
     $this->details = $details;
   }
 
-  public function getIp(): string
+  public function getIp(): string|null
   {
     return $this->ip;
   }

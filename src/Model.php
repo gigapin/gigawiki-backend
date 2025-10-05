@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Src;
 
@@ -7,17 +8,21 @@ use Exception;
 
 class Model
 {
-    private static ?EntityManager $entityManager = null;
+  /**
+   * @var EntityManager|null
+   */
+  private static ?EntityManager $entityManager = null;
 
   /**
    * @throws Exception
+   * @return EntityManager
    */
-  public static function db(): EntityManager
-    {
-        if (self::$entityManager === null) {
-            self::$entityManager = (new DB())->connection();
-        }
+  public static function entityManager(): EntityManager
+  {
+      if (self::$entityManager === null) {
+          self::$entityManager = (new DB())->connection();
+      }
 
-        return self::$entityManager;
-    }
+      return self::$entityManager;
+  }
 }

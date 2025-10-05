@@ -92,12 +92,16 @@ class ApiResponse
     }
 
     try {
+      if (!$data) {
+        throw new Exception("An error occurred during the fetching data");
+      }
+
       return json_encode($data);
     } catch (Exception $exception) {
-      http_response_code(404);
+      http_response_code(500);
       return json_encode([
         'message' => $exception->getMessage(),
-        'status' => 404
+        'status' => 500
       ]);
     }
   }
