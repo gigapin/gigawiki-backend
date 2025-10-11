@@ -7,6 +7,8 @@ use Exception;
 use Src\ApiResponse;
 use Src\Controller;
 use App\Models\User;
+use Src\Exceptions\AuthenticationException;
+use Src\Exceptions\ValidationException;
 use Src\JWTCodec;
 
 class LoginController extends Controller
@@ -20,13 +22,13 @@ class LoginController extends Controller
       $data = ApiResponse::post();
 
       if (empty($data['email']) || empty($data['password'])) {
-        throw new Exception('Email and password are required', 400);
+        throw new ValidationException('Email and password are required');
       }
 
       $user = User::getUserByEmail($data['email'], $data['password']);
 
       if (is_null($user)) {
-        throw new Exception('Credentials are not valid, try again');
+        throw new AuthenticationException('Credentials are not valid, try again');
       }
 
       $jwt = new JWTCodec;
