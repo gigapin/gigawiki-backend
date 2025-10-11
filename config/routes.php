@@ -10,9 +10,12 @@
 
 use App\Controllers\HomeController;
 use App\Controllers\Admin\DashboardController;
+use App\Controllers\Auth\LoginController;
 
 /** @var $route */
 
 $route->get('/', [HomeController::class, 'index']);
+
+$route->post('/api/v1/login/sign-in', [LoginController::class, 'signIn']);
 
 $route->get('/api/v1/admin/dashboard', [DashboardController::class, 'index']);

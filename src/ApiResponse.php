@@ -154,10 +154,10 @@ class ApiResponse
     return json_decode(file_get_contents('php://input'), true);
   }
 
-  public static function jsonResponse(array $data): string
+  public static function jsonResponse(array $data, int $status): string
   {
     self::headers();
-    http_response_code(200);
+    http_response_code($status);
     header('Content-Type: application/json');
 
     return json_encode($data);
